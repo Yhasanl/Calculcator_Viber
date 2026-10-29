@@ -28,6 +28,29 @@ public class MainActivity extends AppCompatActivity {
         setupButtons();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("CURRENT_INPUT", currentInput);
+        outState.putString("PREVIOUS_INPUT", previousInput);
+        outState.putString("CURRENT_OPERATOR", currentOperator);
+        outState.putBoolean("IS_NEW_OPERATION", isNewOperation);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        currentInput = savedInstanceState.getString("CURRENT_INPUT", "");
+        previousInput = savedInstanceState.getString("PREVIOUS_INPUT", "");
+        currentOperator = savedInstanceState.getString("CURRENT_OPERATOR", "");
+        isNewOperation = savedInstanceState.getBoolean("IS_NEW_OPERATION", true);
+
+        updateDisplay();
+        if (!previousInput.isEmpty()) {
+            tvHistory.setText(previousInput + " " + currentOperator);
+        }
+    }
+
     private void setupButtons() {
         int[] numericButtons = {
                 R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,
@@ -171,18 +194,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void toggleSign() {
-        if (!currentInput.isEmpty() && !currentInput.equals("0")) {
-            if (currentInput.startsWith("-")) {
-                currentInput = currentInput.substring(1);
-            } else {
-                currentInput = "-" + currentInput;
-            }
-            updateDisplay();
-        }
-    }
-
     private void deleteLastDigit() {
+        if (currentInput.equals("Error")) {
+            clearAll();
+            return;
+        }
+
         if (!currentInput.isEmpty() && !isNewOperation) {
             currentInput = currentInput.substring(0, currentInput.length() - 1);
             if (currentInput.isEmpty() || currentInput.equals("-")) {
@@ -192,6 +209,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void toggleSign() {
+        if (currentInput.equals("Error")) {
+            return;
+        }
+
+        if (!currentInput.isEmpty() && !currentInput.equals("0")) {
+            if (currentInput.startsWith("-")) {
+                currentInput = currentInput.substring(1);
+            } else {
+                currentInput = "-" + currentInput;
+            }
+            updateDisplay();
+        }
+    }
     private void clearEntry() {
         currentInput = "0";
         isNewOperation = true;
