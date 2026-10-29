@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F3F3F3">
+
+    <TextView
+        android:id="@+id/tvHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/history_default"
+        android:textSize="16sp"
+        android:textColor="#888888"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/display_default"
+        android:textSize="48sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:paddingBottom="24dp"
+        android:maxLines="1"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="4"
+        android:rowCount="6"
+        android:layout_weight="1">
+
+        <Button android:id="@+id/btnPercent" android:text="@string/btn_percent" />
+        <Button android:id="@+id/btnCE" android:text="@string/btn_ce" />
+        <Button android:id="@+id/btnC" android:text="@string/btn_c" />
+        <Button android:id="@+id/btnDelete" android:text="@string/btn_delete" />
+
+        <Button android:id="@+id/btnFraction" android:text="@string/btn_fraction" />
+        <Button android:id="@+id/btnSquare" android:text="@string/btn_square" />
+        <Button android:id="@+id/btnSqrt" android:text="@string/btn_sqrt" />
+        <Button android:id="@+id/btnDivide" android:text="@string/btn_divide" />
+
+        <Button android:id="@+id/btn7" android:text="@string/btn_7" />
+        <Button android:id="@+id/btn8" android:text="@string/btn_8" />
+        <Button android:id="@+id/btn9" android:text="@string/btn_9" />
+        <Button android:id="@+id/btnMultiply" android:text="@string/btn_multiply" />
+
+        <Button android:id="@+id/btn4" android:text="@string/btn_4" />
+        <Button android:id="@+id/btn5" android:text="@string/btn_5" />
+        <Button android:id="@+id/btn6" android:text="@string/btn_6" />
+        <Button android:id="@+id/btnMinus" android:text="@string/btn_minus" />
+
+        <Button android:id="@+id/btn1" android:text="@string/btn_1" />
+        <Button android:id="@+id/btn2" android:text="@string/btn_2" />
+        <Button android:id="@+id/btn3" android:text="@string/btn_3" />
+        <Button android:id="@+id/btnPlus" android:text="@string/btn_plus" />
+
+        <Button android:id="@+id/btnSign" android:text="@string/btn_sign" />
+        <Button android:id="@+id/btn0" android:text="@string/btn_0" />
+        <Button android:id="@+id/btnDot" android:text="@string/btn_dot" />
+        <Button android:id="@+id/btnEquals" android:text="@string/btn_equals" android:backgroundTint="#8AB4F8"/>
+    </GridLayout>
+</LinearLayout>
